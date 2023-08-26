@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="fs-2 text">Stylize Your Images</h1>
+
+    <form id="upload-file" action="{{ url_for('second.predict') }}" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Select an Image to Stylize</label>
+            <input class="form-control" type="file" name="file" id="formFile">
+        </div>
+
+        <div class="mb-3">
+            <label for="styleSelect" class="form-label">Choose a Style</label>
+            <select name="style" class="form-select" id="styleSelect">
+                <option value="default">Choose...</option>
+                <option value="Style1">Cartoon</option>
+                <option value="Style2">Water color</option>
+                <option value="Style3">Pencil Sketch</option>
+                <option value="Style4">Pencil Color Sketch</option>
+                <option value="Style5">Pastel color</option>
+                <option value="Style6">Image Enhancement</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Stylize</button>
+    </form>
+
+    <div class="loader" style="display:none;"></div>
+    <h3 id="result">
+        <span></span>
+    </h3>
+</div>
+{% endblock %}

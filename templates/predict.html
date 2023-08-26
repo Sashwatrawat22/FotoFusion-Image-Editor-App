@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<div class="container">
+    <p class="result-message">
+        <strong>Success!</strong> Image has been stylized! View Stylized Image
+        <a href="{{ url_for('second.cartoon_img', filename=cartoon_file) }}" target="_blank">here</a>
+    </p>
+    
+    <div class="image-container">
+        <div class="image-box">
+            <h2>Uploaded Image</h2>
+            <div class="image-wrapper">
+                <img src="{{ url_for('second.upload_img', filename=file_name) }}" class="img-fluid">
+            </div>
+        </div>
+        <div class="image-box">
+            <h2>Stylized Image</h2>
+            <div class="image-wrapper">
+                <img src="{{ url_for('second.cartoon_img', filename=cartoon_file) }}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

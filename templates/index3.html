@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% block content %}
+
+  <!-- CSS  -->
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="row">
+        <form action="{{ url_for('third.index') }}" method="post" class="col s12" enctype="multipart/form-data">
+
+          <div class="row">
+
+            <div class="input-field col s5" style="margin-left: 1px">
+              <div>
+                <img src="{{ url_for('static',filename=source) }}" width="300" height="300">
+              </div>
+              <div class="row">
+                <label for="first_name"><b> Source Image</b></label><br>
+                <div class = "file-field input-field">
+                  <div class = "btn" style="background-color: #E85A03">
+                    <span>Browse</span>
+                    <input type = "file" name="source_image" id="source_image" />
+                  </div>
+                  <div class = "file-path-wrapper">
+                    <input class = "file-path validate" type = "text" placeholder = "Upload Image" name="source_name" id="source_name" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-field col s5" style="margin-left: 60px">
+              <div>
+                <img src="{{ url_for('static',filename=destination) }}" width="300" height="300">
+              </div>
+              <div class="row">
+                <label for="first_name"><b> Destination Image</b></label><br>
+                <div class = "file-field input-field">
+                  <div class = "btn" style="background-color: #E85A03">
+                    <span>Browse</span>
+                    <input type = "file" name="destination_image" id="destination_image" />
+                  </div>
+                  <div class = "file-path-wrapper">
+                    <input class = "file-path validate" type = "text" placeholder = "Upload Image" name="destination_name" id="destination_name" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-field col s5" style="margin-left: 100px;">
+              <div>
+                <img src="{{ url_for('static',filename=result) }}" width="300" height="300">
+              </div>
+              <div class="row center" style="margin-top:30px; margin-left:80px">
+                <button id="submit" type="submit" class="btn-large" style="background-color: #E85A03">Swap</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
+  <!--  Scripts-->
+  <script src="./static/js/materialize.js"></script>
+  <script type="text/javascript">
+    document.getElementById('source_image').onchange = function () {
+        document.getElementById('source_name').value = this.value.slice(12,100);
+    };
+    document.getElementById('destination_image').onchange = function () {
+        document.getElementById('destination_name').value = this.value.slice(12,100);
+    };
+  </script>
+
+
+{% endblock %}
